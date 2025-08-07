@@ -9,7 +9,7 @@ RUN curl -L https://github.com/pocketbase/pocketbase/releases/download/v0.23.3/p
   && rm pb.zip \
   && chmod +x pocketbase
 
-COPY pb_data ./pb_data
+
 COPY pb_migrations ./pb_migrations
 
 EXPOSE 8090

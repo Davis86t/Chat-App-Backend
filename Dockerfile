@@ -12,5 +12,6 @@ RUN curl -L "https://github.com/pocketbase/pocketbase/releases/download/v${PB_VE
 COPY pb_migrations ./pb_migrations
 
 EXPOSE 8090
-CMD ["sh", "-c", "echo '--- Checking /data before starting PocketBase ---' && ls -la /data && echo '--- Starting PocketBase ---' && ./pocketbase serve --http=0.0.0.0:8090 --dir /data"]
+CMD ["sh", "-c", "./pocketbase superuser upsert \"$PB_ADMIN_EMAIL\" \"$PB_ADMIN_PASSWORD\" --dir /data; ./pocketbase serve --http=0.0.0.0:8090 --dir /data"]
+
 
